@@ -2,15 +2,16 @@ public class Player {
     private String name;
     private int healthPercentage;
     private Weapon weapon;
+    private int hit;
 
     public Player(String name, int healthPercentage, Weapon weapon) {
         this.name = name;
         this.healthPercentage = healthPercentage;
         checkHealth(healthPercentage);
         this.weapon = weapon;
-    }
+            }
 
-    private void checkHealth(int healthPercentage) {
+    public void checkHealth(int healthPercentage) {
         if (healthPercentage < 0) {
             this.healthPercentage = 0;
         }
@@ -36,6 +37,15 @@ public class Player {
     public void restoreHealth(int healthPotion) {
         this.healthPercentage += healthPotion;
         checkHealth(this.healthPercentage);
+    }
+
+    public static void fight(Player p1, Player p2, int hit) {
+        p1.healthPercentage = p1.healthPercentage + hit;
+        p1.checkHealth(p1.healthPercentage);
+        p2.healthPercentage = p2.healthPercentage - hit;
+        p2.checkHealth(p2.healthPercentage);
+
+        System.out.println(p1.name+" "+hit+" hit "+p2.name+". Result "+p1.name+": "+p1.healthRemaining()+". Result "+p2.name+": "+p2.healthRemaining());
     }
 
 

@@ -17,5 +17,8 @@ public class Main {
         System.out.println(emra);
         kaan.restoreHealth(500);
         System.out.println(kaan);
+        Player.fight(emra,kaan,20);
+        Player.fight(kaan,emra,50);
+
     }
 }
